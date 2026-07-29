@@ -15,9 +15,28 @@ export default defineConfig(() => {
       sourcemap: false,
       minify: 'esbuild' as const,
       cssMinify: true,
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 500,
       rollupOptions: {
         maxParallelFileOps: 1,
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'vendor-react';
+              }
+              if (id.includes('firebase')) {
+                return 'vendor-firebase';
+              }
+              if (id.includes('recharts') || id.includes('d3')) {
+                return 'vendor-charts';
+              }
+              if (id.includes('lucide-react') || id.includes('motion')) {
+                return 'vendor-ui';
+              }
+              return 'vendor';
+            }
+          },
+        },
       },
     },
     server: {
