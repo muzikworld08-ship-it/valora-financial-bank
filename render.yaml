@@ -1,12 +1,14 @@
 services:
   - type: web
-    name: valora-sovereign-banking
+    name: valora-financial-bank
     runtime: node
-    buildCommand: npm install && npm run build
-    startCommand: npm run start
+    buildCommand: bun install && bun run build || npm install && npm run build
+    startCommand: bun run start || npm run start
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=2048"
       - key: SMTP_HOST
         sync: false
       - key: SMTP_PORT

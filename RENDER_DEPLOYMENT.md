@@ -33,8 +33,8 @@ git push -u origin main
    - **Region**: Select the region closest to you (e.g., `Oregon (US West)` or `Frankfurt (EU)`)
    - **Branch**: `main`
    - **Runtime**: `Node`
-   - **Build Command**: `npm install && npm run build`
-   - **Start Command**: `npm run start`
+   - **Build Command**: `bun install && bun run build` (or `npm install && npm run build`)
+   - **Start Command**: `bun run start` (or `npm run start`)
    - **Instance Type**: `Free` or `Starter` (The free instance is 100% sufficient!)
 
 ---
