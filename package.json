@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --outfile=dist/server.cjs",
-    "prestart": "node -e \"if (!require('fs').existsSync('dist/server.cjs')) { console.error('ERROR: dist/server.cjs not found. Please ensure your Render Build Command in Dashboard Settings is set to: bun install && bun run build'); process.exit(1); }\"",
+    "build": "NODE_OPTIONS='--max-old-space-size=384' vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --outfile=dist/server.cjs",
+    "prestart": "node -e \"if (!require('fs').existsSync('dist/server.cjs')) { console.log('dist/server.cjs not found, running build...'); require('child_process').execSync('bun run build || npm run build', {stdio: 'inherit'}); }\"",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",

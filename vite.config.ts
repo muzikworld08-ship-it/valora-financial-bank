@@ -13,7 +13,12 @@ export default defineConfig(() => {
     },
     build: {
       sourcemap: false,
-      chunkSizeWarningLimit: 1600,
+      minify: 'esbuild' as const,
+      cssMinify: true,
+      chunkSizeWarningLimit: 2000,
+      rollupOptions: {
+        maxParallelFileOps: 2,
+      },
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
