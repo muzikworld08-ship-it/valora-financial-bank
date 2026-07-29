@@ -12,6 +12,7 @@ export default defineConfig(() => {
       },
     },
     build: {
+      target: 'esnext',
       sourcemap: false,
       minify: 'esbuild' as const,
       cssMinify: true,
@@ -21,17 +22,20 @@ export default defineConfig(() => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom')) {
+              if (id.includes('react/') || id.includes('react-dom/') || id.includes('scheduler/')) {
                 return 'vendor-react';
               }
-              if (id.includes('firebase')) {
+              if (id.includes('firebase') || id.includes('@firebase')) {
                 return 'vendor-firebase';
               }
               if (id.includes('recharts') || id.includes('d3')) {
                 return 'vendor-charts';
               }
-              if (id.includes('lucide-react') || id.includes('motion')) {
-                return 'vendor-ui';
+              if (id.includes('lucide-react')) {
+                return 'vendor-lucide';
+              }
+              if (id.includes('motion') || id.includes('framer-motion')) {
+                return 'vendor-motion';
               }
               return 'vendor';
             }
