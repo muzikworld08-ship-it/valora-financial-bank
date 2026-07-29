@@ -17,7 +17,7 @@ export default defineConfig(() => {
       cssMinify: true,
       chunkSizeWarningLimit: 2000,
       rollupOptions: {
-        maxParallelFileOps: 2,
+        maxParallelFileOps: 1,
       },
     },
     server: {
