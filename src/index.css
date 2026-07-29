@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  --font-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  --color-brand-red: #D32F2F;
+  --color-brand-black: #000000;
+  --color-brand-dark: #0A0A0D;
+  --color-brand-gray: #7F8C8D;
+  --color-brand-offwhite: #FFFFFF;
+
+  /* Global theme override to enforce absolute black, white, and red styling */
+  --color-slate-950: #000000;
+  --color-slate-900: #08080C;
+  --color-slate-850: #101016;
+  --color-slate-800: #1C1C26;
+  --color-slate-700: #2C2C38;
+  --color-slate-600: #4B4B5A;
+  --color-slate-500: #7F8C8D;
+  --color-slate-400: #E0E0E0;
+  --color-slate-300: #F0F0F0;
+  --color-slate-200: #F7F7F7;
+  --color-slate-100: #FAFAFA;
+  --color-slate-50: #FFFFFF;
+
+  --animate-shake: shake 0.4s ease-in-out;
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+    20%, 40%, 60%, 80% { transform: translateX(6px); }
+  }
+}
+
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif !important;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-smoothing: grayscale;
+}
+
+/* Global design adjustments to make text and typography show bolder and highly readable */
+p, span, li, button, input, select, textarea {
+  font-weight: 500 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+}
+
+/* Position Tawk.to customer support widget based on active view to avoid overlapping critical elements */
+body:not(.portal-active) .tawk-min-container,
+body:not(.portal-active) #tawkchat-iframe-container,
+body:not(.portal-active) iframe[src*="tawk.to"],
+body:not(.portal-active) iframe[title="chat widget"] {
+  bottom: 30px !important;
+  right: 30px !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+@media (max-width: 767px) {
+  body:not(.portal-active) .tawk-min-container,
+  body:not(.portal-active) #tawkchat-iframe-container,
+  body:not(.portal-active) iframe[src*="tawk.to"],
+  body:not(.portal-active) iframe[title="chat widget"] {
+    bottom: 20px !important;
+    right: 20px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+}
+
+body.portal-active .tawk-min-container,
+body.portal-active #tawkchat-iframe-container,
+body.portal-active iframe[src*="tawk.to"],
+body.portal-active iframe[title="chat widget"] {
+  bottom: 30px !important;
+  right: 30px !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+@media (max-width: 767px) {
+  body.portal-active .tawk-min-container,
+  body.portal-active #tawkchat-iframe-container,
+  body.portal-active iframe[src*="tawk.to"],
+  body.portal-active iframe[title="chat widget"] {
+    bottom: 95px !important; /* Spacers: 72px bottom-menu + 23px spacing = 95px */
+    right: 20px !important;  /* 20px right margin spacing */
+    top: auto !important;
+    left: auto !important;
+  }
+}
+
+/* Force all slate, gray, zinc, and neutral text utilities to solid black inside the customer portal for maximum legibility */
+.customer-portal .text-slate-300,
+.customer-portal .text-slate-400,
+.customer-portal .text-slate-500,
+.customer-portal .text-slate-600,
+.customer-portal .text-slate-700,
+.customer-portal .text-slate-800,
+.customer-portal .text-slate-900,
+.customer-portal .text-gray-300,
+.customer-portal .text-gray-400,
+.customer-portal .text-gray-500,
+.customer-portal .text-gray-600,
+.customer-portal .text-gray-700,
+.customer-portal .text-gray-800,
+.customer-portal .text-gray-900,
+.customer-portal .text-zinc-300,
+.customer-portal .text-zinc-400,
+.customer-portal .text-zinc-500,
+.customer-portal .text-zinc-600,
+.customer-portal .text-zinc-700,
+.customer-portal .text-zinc-800,
+.customer-portal .text-zinc-900,
+.customer-portal .text-neutral-300,
+.customer-portal .text-neutral-400,
+.customer-portal .text-neutral-500,
+.customer-portal .text-neutral-600,
+.customer-portal .text-neutral-700,
+.customer-portal .text-neutral-800,
+.customer-portal .text-neutral-900,
+.customer-portal .text-slate-450,
+.customer-portal .text-slate-550,
+.customer-portal .text-slate-707 {
+  color: #000000 !important;
+}
+
