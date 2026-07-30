@@ -12,20 +12,6 @@
   --color-brand-gray: #7F8C8D;
   --color-brand-offwhite: #FFFFFF;
 
-  /* Global theme override to enforce absolute black, white, and red styling */
-  --color-slate-950: #000000;
-  --color-slate-900: #08080C;
-  --color-slate-850: #101016;
-  --color-slate-800: #1C1C26;
-  --color-slate-700: #2C2C38;
-  --color-slate-600: #4B4B5A;
-  --color-slate-500: #7F8C8D;
-  --color-slate-400: #E0E0E0;
-  --color-slate-300: #F0F0F0;
-  --color-slate-200: #F7F7F7;
-  --color-slate-100: #FAFAFA;
-  --color-slate-50: #FFFFFF;
-
   --animate-shake: shake 0.4s ease-in-out;
 
   @keyframes shake {
@@ -41,8 +27,8 @@
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #000000 !important;
-  color: #FFFFFF !important;
+  background-color: #ffffff;
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-smoothing: grayscale;
 }
