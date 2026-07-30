@@ -2181,8 +2181,13 @@ export default function App() {
   if (loading || !state) {
     return (
       <Preloader
-        duration={1500}
-        onComplete={() => setLoading(false)}
+        duration={1200}
+        onComplete={() => {
+          if (!state) {
+            setState(seedState());
+          }
+          setLoading(false);
+        }}
         message="Loading Secure Banking Services..."
         subMessage="Valora Financial Wealth & Custody Gateway"
       />

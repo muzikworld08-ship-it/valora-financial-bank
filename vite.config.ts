@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -12,26 +13,13 @@ export default defineConfig(() => {
       },
     },
     build: {
-      target: 'esnext',
+      target: 'es2020',
       sourcemap: false,
       minify: 'esbuild' as const,
       cssMinify: true,
-      chunkSizeWarningLimit: 1500,
+      chunkSizeWarningLimit: 2000,
       rollupOptions: {
         maxParallelFileOps: 1,
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
-                return 'vendor-react';
-              }
-              if (id.includes('recharts') || id.includes('d3')) {
-                return 'vendor-charts';
-              }
-              return 'vendor';
-            }
-          },
-        },
       },
     },
     server: {

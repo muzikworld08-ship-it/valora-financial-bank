@@ -1612,7 +1612,7 @@ export function InvestmentProperties({ dark }: { dark?: boolean }) {
                         <div className="text-[9.5px] leading-relaxed text-slate-300">
                           <p>📧 Email: <span className="text-white">{inq.email}</span></p>
                           <p>📞 Phone: <span className="text-white">{inq.phone}</span></p>
-                          <p>🏦 Target: <span className="text-brand-red font-extrabold uppercase">{inq.propertySelected || inq.propertyName || "Unspecified asset"}</span></p>
+                          <p>🏦 Target: <span className="text-brand-red font-extrabold uppercase">{(inq as any).propertySelected || inq.propertyName || "Unspecified asset"}</span></p>
                           <p>💰 Capital: <span className="text-emerald-450 text-emerald-400">${(inq.investmentAmount || 0).toLocaleString()}</span></p>
                           <div className="mt-2 p-2 rounded bg-slate-900 border border-slate-805 text-slate-400 max-h-20 overflow-y-auto text-[9px] font-sans">
                             {inq.message}

@@ -25,7 +25,6 @@ export function Preloader({
   message = "Loading Secure Banking Services...",
   subMessage = "Your trusted financial partner."
 }: PreloaderProps) {
-  const [visible, setVisible] = useState(true);
   const [fadingOut, setFadingOut] = useState(false);
   const [progress, setProgress] = useState(0);
   const [statusText, setStatusText] = useState(SECURE_MESSAGES[0]);
@@ -53,11 +52,7 @@ export function Preloader({
     // Complete loader
     const timeout = setTimeout(() => {
       setFadingOut(true);
-      const fadeTimeout = setTimeout(() => {
-        setVisible(false);
-        if (onComplete) onComplete();
-      }, 500); // 500ms fade transition
-      return () => clearTimeout(fadeTimeout);
+      if (onComplete) onComplete();
     }, duration);
 
     return () => {
@@ -80,8 +75,6 @@ export function Preloader({
     mediaQuery.addEventListener("change", listener);
     return () => mediaQuery.removeEventListener("change", listener);
   }, []);
-
-  if (!visible) return null;
 
   return (
     <div

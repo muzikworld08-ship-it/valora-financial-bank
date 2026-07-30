@@ -342,7 +342,7 @@ export function TransactionOTPVerification({
                       pattern="[0-9]*"
                       inputMode="numeric"
                       maxLength={1}
-                      ref={(el) => (inputRefs.current[index] = el!)}
+                      ref={(el) => { inputRefs.current[index] = el; }}
                       value={char}
                       onChange={(e) => handleChange(index, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(index, e)}
