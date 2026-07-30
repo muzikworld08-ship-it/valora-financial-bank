@@ -8,7 +8,7 @@ export default defineConfig(() => {
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(__dirname, './src'),
       },
     },
     build: {
@@ -16,26 +16,17 @@ export default defineConfig(() => {
       sourcemap: false,
       minify: 'esbuild' as const,
       cssMinify: true,
-      chunkSizeWarningLimit: 500,
+      chunkSizeWarningLimit: 1500,
       rollupOptions: {
         maxParallelFileOps: 1,
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('react/') || id.includes('react-dom/') || id.includes('scheduler/')) {
+              if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
                 return 'vendor-react';
-              }
-              if (id.includes('firebase') || id.includes('@firebase')) {
-                return 'vendor-firebase';
               }
               if (id.includes('recharts') || id.includes('d3')) {
                 return 'vendor-charts';
-              }
-              if (id.includes('lucide-react')) {
-                return 'vendor-lucide';
-              }
-              if (id.includes('motion') || id.includes('framer-motion')) {
-                return 'vendor-motion';
               }
               return 'vendor';
             }

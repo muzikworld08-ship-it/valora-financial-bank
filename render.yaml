@@ -2,8 +2,8 @@ services:
   - type: web
     name: valora-financial-bank
     runtime: node
-    buildCommand: bun install && bun run build || npm install && npm run build
-    startCommand: bun run start || npm run start
+    buildCommand: bun install && bun run build
+    startCommand: bun run start
     envVars:
       - key: NODE_ENV
         value: production
