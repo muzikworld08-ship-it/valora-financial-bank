@@ -4,6 +4,7 @@ services:
     runtime: node
     buildCommand: bun install && bun run build
     startCommand: bun run start
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
