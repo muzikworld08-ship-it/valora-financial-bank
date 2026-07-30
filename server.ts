@@ -1697,7 +1697,13 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), "dist");
+    const possibleDistPaths = [
+      path.join(process.cwd(), "dist"),
+      path.join(__dirname, "..", "dist"),
+      __dirname
+    ];
+    const distPath = possibleDistPaths.find((p) => fs.existsSync(path.join(p, "index.html"))) || possibleDistPaths[0];
+    console.log(`Serving static assets from: ${distPath}`);
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));

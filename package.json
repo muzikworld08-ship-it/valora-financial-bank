@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --outfile=dist/server.cjs && node -e \"console.log('Current backend entry: server.ts'); console.log('Output directory: dist/'); console.log('Generated files:', require('fs').readdirSync('dist')); if (!require('fs').existsSync('dist/server.cjs')) { console.error('FATAL ERROR: dist/server.cjs is missing!'); process.exit(1); } else { console.log('BUILD SUCCESS'); console.log('FOUND dist/server.cjs'); }\"",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --outfile=dist/server.cjs && node --input-type=module -e \"import fs from 'fs'; console.log('Current backend entry: server.ts'); console.log('Output directory: dist/'); console.log('Generated files:', fs.readdirSync('dist')); if (!fs.existsSync('dist/server.cjs')) { console.error('FATAL ERROR: dist/server.cjs is missing!'); process.exit(1); } else { console.log('BUILD SUCCESS'); console.log('FOUND dist/server.cjs'); }\"",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
